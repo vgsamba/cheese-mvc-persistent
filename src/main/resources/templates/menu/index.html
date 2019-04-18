@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">My Cheeses</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+<nav th:replace="fragments::navigation"></nav>
+
+
+
+    <!--<div th:if="${menus}">-->
+        <ul><!--gets menu,id and displays at url with /menu/view/ -->
+            <li th:each="menu : ${menus}">
+                <a th:href="'menu/view/' + ${menu.id}" th:text="${menu.name}"></a>
+            </li>
+        </ul>
+    <!--</div>-->
+
+
+      <!--  <a href="/cheese">List</a> |
+        <a href="/cheese/add">Add</a> |
+        <a href="/cheese/remove">Remove</a>
+        <a href="/category">Category</a>
+        <a href="/menu">Menus</a>-->
+      <p><a href="/menu/add">Add Menu</a></p>
+
+
+</body>
+</html>

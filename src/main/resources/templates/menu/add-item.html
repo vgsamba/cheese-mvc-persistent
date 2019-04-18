@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">My Cheeses</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<h1 th:text="${title}">Default Title</h1>
+<nav th:replace="fragments::navigation"></nav>
+
+<form method="post" th:object="${form}" action="/menu/add-item">
+    <p th:unless="${cheeses} and ${cheeses.size()}">no cheese :(</p>
+
+    <div class="form-group">
+<label th:for="cheeseId"> Cheese</label>
+    <select name="cheeseId">
+        <option th:each="cheese : *{cheeses}"
+                th:text="${cheese.name}"
+                th:value="${cheese.id}"></option>
+    </select>
+        <!--span th:errors="*{name}" class="error"></span-->
+    </div>
+    <!--This below hidden line will pass the ID of the menu in the post request, but will not be visible to the user.-->
+    <input type="hidden" name="menuId" th:value="*{menu.id}" />
+    <input type="submit" value="Add Item" />
+
+</form>
+
+<nav th:fragment="navigation">
+    <a href="/cheese">List</a> |
+    <a href="/cheese/add">Add</a> |
+    <a href="/cheese/remove">Remove</a>|
+    <a href="/category">Category</a>
+</nav>
+
+</body>
+</html>

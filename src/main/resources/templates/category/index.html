@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head lang="en" xmlns:th="http://www.thymeleaf.org/">
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+    <h1 th:text="${title}"> Default title</h1>
+
+    <div th:if="${Category}">
+       <ul th:each="catitem:${Category}">
+        <li th:text="${catitem.name}" />
+    </ul>
+        </div>
+   <!-- <div th:if="${Category}">
+    <table>
+        <tr th:each="catitem:${Category}">
+            <td th:text="Category Name: "/>
+            <td th:text="${catitem.name}"/>
+        </tr>
+     </table>
+        </div>-->
+    <nav th:fragment="navigation">
+    <a href="/category/add">Add Category</a>
+        </nav>
+</body>
+</html>
