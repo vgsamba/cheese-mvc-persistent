@@ -5,6 +5,7 @@
     <title></title>
 </head>
 <body>
+<nav th:replace="fragments :: navigation"></nav>
     <h1 th:text="${title}"> Default title</h1>
 
     <div th:if="${Category}">
@@ -12,14 +13,7 @@
         <li th:text="${catitem.name}" />
     </ul>
         </div>
-   <!-- <div th:if="${Category}">
-    <table>
-        <tr th:each="catitem:${Category}">
-            <td th:text="Category Name: "/>
-            <td th:text="${catitem.name}"/>
-        </tr>
-     </table>
-        </div>-->
+
     <nav th:fragment="navigation">
     <a href="/category/add">Add Category</a>
         </nav>
